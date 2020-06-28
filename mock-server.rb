@@ -22,16 +22,9 @@ class Mock
 end
 
 def bind(http_method, status, body, path)
-  if http_method == 'POST'
-    puts "Bind POST to #{path}"
-    post path do
-      body
-    end
-  elsif http_method == 'GET'
-    puts "Bind GET to #{path}"
-    get path do
-      body
-    end
+  method = http_method.downcase.to_s
+  send(method, path) do
+    body
   end
 end
 
