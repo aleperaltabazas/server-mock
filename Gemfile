@@ -1,0 +1,16 @@
+source 'https://rubygems.org'
+
+ruby '2.6.3'
+
+gem 'debase', '~> 0.2.4.1'
+gem 'http', '~> 4.3.0'
+gem 'logger', '~> 1.4.2'
+gem 'logstash-logger'
+gem 'rack-test'
+gem 'require_all', '~> 3.0.0'
+gem 'rest-client', '~> 2.1.0'
+gem 'rspec', '~> 3.8.0'
+gem 'ruby-debug-ide', '~> 0.7.0'
+gem 'sinatra', '~> 2.0.8.1'
+gem 'sinatra-contrib', '~> 2.0.8.1'
+gem 'webmock'
