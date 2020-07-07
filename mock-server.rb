@@ -9,16 +9,17 @@ class Mock
   def self.create(json)
     _method = json['method']
     puts _method
-    Mock.new(_method, json['status'], json['body'], json['path'])
+    Mock.new(_method, json['status'] || 200, json['body'], json['path'], json['headers'] || Hash.new)
   end
 
-  attr_accessor :http_method, :status, :body, :path
+  attr_accessor :http_method, :status, :body, :path, :headers
     
-  def initialize(http_method, status, body, path)
+  def initialize(http_method, status, body, path, headers)
     @http_method = http_method
     @status = status
     @body = body
     @path = path
+    @headers = headers
   end
 end
 
@@ -26,7 +27,7 @@ def bind(http_method, status, body, path)
   method = http_method.downcase.to_s
   send(method, path) do
     cross_origin
-    body.to_json
+    [status, headers, body.to_json]
   end
 end
 
